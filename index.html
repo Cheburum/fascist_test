@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест "Насколько ты фашист по Умберто Эко"</title>
+    <title>Расширенный тест "Насколько ты фашист по Умберто Эко"</title>
     <style>
         :root {
             --primary-color: #5D4037;
@@ -13,6 +13,11 @@
             --container-bg: #fff;
             --button-hover: #4E342E;
             --progress-bg: #D7CCC8;
+            --chart-1: rgba(93, 64, 55, 0.8);
+            --chart-2: rgba(66, 66, 66, 0.7);
+            --chart-3: rgba(120, 144, 156, 0.7);
+            --chart-4: rgba(38, 50, 56, 0.7);
+            --chart-5: rgba(141, 110, 99, 0.7);
         }
 
         body {
@@ -33,7 +38,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             padding: 2rem;
             transition: all 0.3s ease;
         }
@@ -45,9 +50,23 @@
             font-weight: 600;
         }
 
+        h2 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
         #test-intro {
-            text-align: center;
+            text-align: left;
             margin-bottom: 2rem;
+        }
+
+        .intro-section {
+            background-color: rgba(93, 64, 55, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
         }
 
         .question-container {
@@ -107,6 +126,11 @@
             cursor: not-allowed;
         }
 
+        .btn-center {
+            display: block;
+            margin: 0 auto;
+        }
+
         .navigation {
             display: flex;
             justify-content: space-between;
@@ -131,7 +155,6 @@
 
         #results {
             display: none;
-            text-align: center;
         }
 
         .result-category {
@@ -147,9 +170,65 @@
             margin-bottom: 0.5rem;
         }
 
+        .result-description {
+            margin-bottom: 0.5rem;
+        }
+
         .restart-btn {
             margin-top: 2rem;
             text-align: center;
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .ideology-match {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .ideology-name {
+            width: 180px;
+            font-weight: 500;
+        }
+
+        .ideology-bar-container {
+            flex-grow: 1;
+            height: 16px;
+            background-color: var(--progress-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ideology-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+        }
+
+        .ideology-percent {
+            width: 45px;
+            text-align: right;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
@@ -168,9 +247,25 @@
     <div class="container">
         <!-- Вступление -->
         <div id="test-intro">
-            <h1>Тест "Насколько ты фашист по Умберто Эко"</h1>
-            <p>Этот тест основан на эссе Умберто Эко "Вечный фашизм" и поможет выявить авторитарные тенденции в мышлении. Ответьте на 14 вопросов, выбирая наиболее близкий вам вариант.</p>
-            <button class="btn" id="start-btn">Начать тест</button>
+            <h1>Расширенный тест "Насколько ты фашист по Умберто Эко"</h1>
+
+            <div class="intro-section">
+                <h2>О тесте</h2>
+                <p>Этот тест основан на эссе Умберто Эко "Вечный фашизм" и расширен для анализа различных форм авторитарного мышления. Тест позволяет выявить авторитарные тенденции не только в классическом фашизме, но и в других идеологических системах, включая анархо-капитализм, Темное Просвещение и либеральный консерватизм.</p>
+                
+                <h2>Принцип работы теста</h2>
+                <p>Тест оценивает ваше мышление по пяти ключевым измерениям:</p>
+                <ul>
+                    <li><strong>Традиционализм</strong> — культ традиции, отрицание модернизма, апелляция к "природному порядку"</li>
+                    <li><strong>Иррационализм</strong> — культ действия ради действия, недоверие к интеллектуальному миру, презрение к рефлексии</li>
+                    <li><strong>Трайбализм</strong> — деление мира на "своих" и "чужих", страх перед различием, селективный популизм</li>
+                    <li><strong>Авторитаризм</strong> — несогласие как предательство, культ силы, презрение к слабым, героический кодекс</li>
+                    <li><strong>Элитизм</strong> — иерархическое мышление, поддержка неравенства, мировоззренческий эксклюзивизм</li>
+                </ul>
+                <p>Каждый вопрос предлагает 6 вариантов ответа, отражающих разные политические позиции. Выбирайте вариант, который наиболее близок вашим убеждениям.</p>
+            </div>
+
+            <button class="btn btn-center" id="start-btn">Начать тест</button>
         </div>
 
         <!-- Контейнер для вопросов -->
@@ -191,19 +286,34 @@
             <h1>Результаты теста</h1>
             <p>Анализ авторитарных тенденций в вашем мышлении:</p>
             
-            <div class="result-category">
-                <div class="result-title">Правый авторитаризм</div>
-                <div class="result-description" id="right-auth-result"></div>
+            <div class="chart-container">
+                <canvas id="radar-chart"></canvas>
             </div>
             
-            <div class="result-category">
-                <div class="result-title">Левый авторитаризм</div>
-                <div class="result-description" id="left-auth-result"></div>
-            </div>
-            
-            <div class="result-category">
-                <div class="result-title">Общая оценка</div>
-                <div class="result-description" id="general-result"></div>
+            <div class="results-grid">
+                <div>
+                    <div class="result-category">
+                        <div class="result-title">Общий уровень авторитарных тенденций</div>
+                        <div class="result-description" id="overall-result"></div>
+                    </div>
+                    
+                    <div class="result-category">
+                        <div class="result-title">Анализ профиля</div>
+                        <div class="result-description" id="profile-analysis"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="result-category">
+                        <div class="result-title">Идеологическая близость</div>
+                        <div id="ideology-matches"></div>
+                    </div>
+                    
+                    <div class="result-category">
+                        <div class="result-title">Потенциальные "слепые пятна"</div>
+                        <div class="result-description" id="blind-spots"></div>
+                    </div>
+                </div>
             </div>
             
             <div class="restart-btn">
@@ -212,304 +322,8 @@
         </div>
     </div>
 
-    <script>
-        // Вопросы для теста
-        const questions = [
-            {
-                text: "Как вы относитесь к идее возвращения к \"золотому веку\"?",
-                options: [
-                    { text: "В прошлом существовали периоды, когда общество было более гармоничным и подлинным, к этому опыту нужно вернуться", score: { right: 2, left: 0, plur: 0 } },
-                    { text: "История движется вперед через противоречия и конфликты, \"золотой век\" - это миф", score: { right: 0, left: 1, plur: 1 } },
-                    { text: "Каждая эпоха имеет свои достоинства и недостатки, идеализация прошлого или будущего одинаково проблематична", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Что вы думаете о технологическом прогрессе?",
-                options: [
-                    { text: "Современные технологии отчуждают людей от их истинной природы, нам нужен более естественный образ жизни", score: { right: 2, left: 0, plur: 0 } },
-                    { text: "Технологический прогресс должен служить коллективному благу, а не узкому кругу элит", score: { right: 0, left: 1, plur: 1 } },
-                    { text: "Технологии сами по себе нейтральны, важно как мы их используем и для каких целей", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Как вы относитесь к прямому политическому действию?",
-                options: [
-                    { text: "Решительное действие ценнее бесконечных дискуссий; иногда необходимо действовать, не дожидаясь полного консенсуса", score: { right: 2, left: 1, plur: 0 } },
-                    { text: "Политическое действие должно основываться на тщательном анализе и коллективном решении", score: { right: 0, left: 1, plur: 1 } },
-                    { text: "Прямое действие важно, но должно сопровождаться критической рефлексией и открытостью к диалогу", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Как вы реагируете, когда единомышленники критикуют ваши общие идеалы?",
-                options: [
-                    { text: "Такая критика обычно играет на руку противникам и подрывает единство движения в критический момент", score: { right: 2, left: 2, plur: 0 } },
-                    { text: "Критика внутри движения необходима для развития и исправления ошибок", score: { right: 0, left: 0, plur: 2 } },
-                    { text: "Внутренняя критика ценна, если она конструктивна и не превращается в личные нападки", score: { right: 0, left: 1, plur: 1 } }
-                ]
-            },
-            {
-                text: "Как вы относитесь к культурному разнообразию?",
-                options: [
-                    { text: "Чрезмерное разнообразие угрожает культурной целостности общества и общим ценностям", score: { right: 2, left: 0, plur: 0 } },
-                    { text: "Разнообразие обогащает общество, но должно существовать в рамках взаимного уважения и общих принципов", score: { right: 1, left: 1, plur: 1 } },
-                    { text: "Культурное разнообразие — это естественное состояние общества, попытки его ограничить обычно маскируют страх перед другим", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Как вы объясняете экономические трудности большинства людей?",
-                options: [
-                    { text: "Наши проблемы вызваны деятельностью определенных групп, которые подрывают благосостояние большинства", score: { right: 2, left: 1, plur: 0 } },
-                    { text: "Экономические трудности — результат системных противоречий, требующих структурных изменений", score: { right: 0, left: 2, plur: 1 } },
-                    { text: "Причины сложны и многообразны, включают как системные факторы, так и конкретные политические решения", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Как вы объясняете общественные проблемы?",
-                options: [
-                    { text: "За видимым хаосом скрывается целенаправленный план определенных скрытых сил", score: { right: 2, left: 1, plur: 0 } },
-                    { text: "Общественные проблемы отражают объективные противоречия экономической системы", score: { right: 0, left: 2, plur: 0 } },
-                    { text: "Большинство проблем возникает из сложного взаимодействия различных факторов, а не из-за злого умысла", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Что вызывает у вас наибольшее негодование?",
-                options: [
-                    { text: "То, как внешние и внутренние враги подрывают достоинство нашего общества/движения", score: { right: 2, left: 1, plur: 0 } },
-                    { text: "Несправедливость экономической системы и эксплуатация трудящихся", score: { right: 0, left: 2, plur: 0 } },
-                    { text: "Ограничение свободы и возможностей людей независимо от их происхождения или взглядов", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Какова, по-вашему, главная цель политической борьбы?",
-                options: [
-                    { text: "Противостояние враждебным силам, которые угрожают нашим ценностям", score: { right: 2, left: 1, plur: 0 } },
-                    { text: "Создание справедливого общества, где преодолены эксплуатация и отчуждение", score: { right: 0, left: 2, plur: 0 } },
-                    { text: "Расширение пространства свободы и сотрудничества между разными группами", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Как вы относитесь к проявлениям человеческой слабости?",
-                options: [
-                    { text: "Слабость недопустима, особенно для тех, кто занимает ответственные позиции или борется за важное дело", score: { right: 2, left: 2, plur: 0 } },
-                    { text: "Уязвимость — это часть человеческого опыта, через которую формируется классовая солидарность", score: { right: 0, left: 1, plur: 1 } },
-                    { text: "Признание уязвимости — основа подлинной человечности и солидарности", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Какие качества вы больше всего цените в политических лидерах?",
-                options: [
-                    { text: "Решительность, силу воли и готовность идти до конца, несмотря на препятствия", score: { right: 2, left: 1, plur: 0 } },
-                    { text: "Способность выражать и защищать интересы трудящихся против эксплуататорских классов", score: { right: 0, left: 2, plur: 0 } },
-                    { text: "Умение слушать разные точки зрения и находить решения, учитывающие различные потребности", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Как вы интерпретируете современные гендерные отношения?",
-                options: [
-                    { text: "Современные тенденции размывают естественные различия между полами, что вредит обществу", score: { right: 2, left: 0, plur: 0 } },
-                    { text: "Патриархат — это историческая форма угнетения, которую необходимо преодолеть наряду с классовым угнетением", score: { right: 0, left: 1, plur: 1 } },
-                    { text: "Гендерные нормы постоянно меняются и переосмысливаются; важно уважать самоопределение каждого", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Кого вы считаете \"настоящим народом\"?",
-                options: [
-                    { text: "Тех, кто сохраняет верность основополагающим ценностям нашего общества, в отличие от оторванных от реальности элит", score: { right: 2, left: 0, plur: 0 } },
-                    { text: "Рабочий класс и другие эксплуатируемые группы, в противовес буржуазии и ее прислужникам", score: { right: 0, left: 2, plur: 0 } },
-                    { text: "\"Народ\" — это разнородное понятие, включающее множество групп с различными интересами и потребностями", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            },
-            {
-                text: "Как вы относитесь к политкорректности в языке?",
-                options: [
-                    { text: "Это форма цензуры, искажающая естественное выражение мыслей и подавляющая свободу слова", score: { right: 2, left: 0, plur: 0 } },
-                    { text: "Язык отражает классовые противоречия и должен быть инструментом борьбы против угнетения", score: { right: 0, left: 2, plur: 0 } },
-                    { text: "Язык меняется вместе с обществом; критическое отношение к оскорбительным выражениям - это часть уважения к другим", score: { right: 0, left: 0, plur: 2 } }
-                ]
-            }
-        ];
-
-        // Переменные состояния
-        let currentQuestionIndex = 0;
-        let answers = new Array(questions.length).fill(null);
-        let scores = { right: 0, left: 0, plur: 0 };
-
-        // DOM элементы
-        const startBtn = document.getElementById('start-btn');
-        const testIntro = document.getElementById('test-intro');
-        const testContainer = document.getElementById('test-container');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const progressBar = document.getElementById('progress-bar');
-        const resultsContainer = document.getElementById('results');
-        const rightAuthResult = document.getElementById('right-auth-result');
-        const leftAuthResult = document.getElementById('left-auth-result');
-        const generalResult = document.getElementById('general-result');
-        const restartBtn = document.getElementById('restart-btn');
-
-        // Обработчики событий
-        startBtn.addEventListener('click', startTest);
-        prevBtn.addEventListener('click', goToPreviousQuestion);
-        nextBtn.addEventListener('click', goToNextQuestion);
-        restartBtn.addEventListener('click', restartTest);
-
-        // Функция начала теста
-        function startTest() {
-            testIntro.style.display = 'none';
-            testContainer.style.display = 'block';
-            updateQuestion();
-        }
-
-        // Функция рестарта теста
-        function restartTest() {
-            currentQuestionIndex = 0;
-            answers = new Array(questions.length).fill(null);
-            scores = { right: 0, left: 0, plur: 0 };
-            resultsContainer.style.display = 'none';
-            testContainer.style.display = 'block';
-            updateQuestion();
-        }
-
-        // Обновление отображения вопроса
-        function updateQuestion() {
-            const question = questions[currentQuestionIndex];
-            questionText.textContent = question.text;
-            
-            // Очищаем контейнер с вариантами ответов
-            optionsContainer.innerHTML = '';
-            
-            // Создаём варианты ответов
-            question.options.forEach((option, index) => {
-                const optionElement = document.createElement('div');
-                optionElement.className = 'option';
-                if (answers[currentQuestionIndex] === index) {
-                    optionElement.classList.add('selected');
-                }
-                optionElement.textContent = option.text;
-                optionElement.addEventListener('click', () => selectOption(index));
-                optionsContainer.appendChild(optionElement);
-            });
-            
-            // Обновляем состояние кнопок и прогресс-бара
-            prevBtn.disabled = currentQuestionIndex === 0;
-            nextBtn.textContent = currentQuestionIndex === questions.length - 1 ? 'Завершить' : 'Далее';
-            nextBtn.disabled = answers[currentQuestionIndex] === null;
-            
-            // Обновляем прогресс-бар
-            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-            progressBar.style.width = `${progress}%`;
-        }
-
-        // Выбор варианта ответа
-        function selectOption(optionIndex) {
-            answers[currentQuestionIndex] = optionIndex;
-            
-            // Обновляем внешний вид опций
-            const optionElements = optionsContainer.querySelectorAll('.option');
-            optionElements.forEach((el, index) => {
-                if (index === optionIndex) {
-                    el.classList.add('selected');
-                } else {
-                    el.classList.remove('selected');
-                }
-            });
-            
-            // Разблокируем кнопку "Далее"
-            nextBtn.disabled = false;
-        }
-
-        // Переход к предыдущему вопросу
-        function goToPreviousQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                updateQuestion();
-            }
-        }
-
-        // Переход к следующему вопросу
-        function goToNextQuestion() {
-            if (answers[currentQuestionIndex] === null) {
-                return; // Пропускаем, если нет ответа
-            }
-            
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                updateQuestion();
-            } else {
-                calculateResults();
-                showResults();
-            }
-        }
-
-        // Подсчёт результатов
-        function calculateResults() {
-            // Сбрасываем счётчики
-            scores = { right: 0, left: 0, plur: 0 };
-            
-            // Суммируем баллы по ответам
-            answers.forEach((answer, questionIndex) => {
-                if (answer !== null) {
-                    const selectedOption = questions[questionIndex].options[answer];
-                    for (const [key, value] of Object.entries(selectedOption.score)) {
-                        scores[key] += value;
-                    }
-                }
-            });
-        }
-
-        // Показ результатов
-        function showResults() {
-            testContainer.style.display = 'none';
-            resultsContainer.style.display = 'block';
-            
-            // Максимально возможные баллы
-            const maxRightScore = 28; // Максимум баллов правого авторитаризма
-            const maxLeftScore = 28;  // Максимум баллов левого авторитаризма
-            const maxPlurScore = 28;  // Максимум баллов плюрализма
-            
-            // Процентные показатели
-            const rightPercent = Math.round((scores.right / maxRightScore) * 100);
-            const leftPercent = Math.round((scores.left / maxLeftScore) * 100);
-            const plurPercent = Math.round((scores.plur / maxPlurScore) * 100);
-            
-            // Результаты по правому авторитаризму
-            let rightResult = "";
-            if (rightPercent >= 70) {
-                rightResult = `Высокий уровень (${rightPercent}%): У вас отчетливо выражены черты правого авторитарного мышления по критериям Умберто Эко.`;
-            } else if (rightPercent >= 40) {
-                rightResult = `Средний уровень (${rightPercent}%): В вашем мышлении присутствуют некоторые элементы правого авторитаризма.`;
-            } else {
-                rightResult = `Низкий уровень (${rightPercent}%): В вашем мышлении мало черт правого авторитаризма.`;
-            }
-            
-            // Результаты по левому авторитаризму
-            let leftResult = "";
-            if (leftPercent >= 70) {
-                leftResult = `Высокий уровень (${leftPercent}%): У вас отчетливо выражены черты левого авторитарного мышления.`;
-            } else if (leftPercent >= 40) {
-                leftResult = `Средний уровень (${leftPercent}%): В вашем мышлении присутствуют некоторые элементы левого авторитаризма.`;
-            } else {
-                leftResult = `Низкий уровень (${leftPercent}%): В вашем мышлении мало черт левого авторитаризма.`;
-            }
-            
-            // Общая оценка
-            let generalCharacteristic = "";
-            if (plurPercent > 60 && rightPercent < 40 && leftPercent < 40) {
-                generalCharacteristic = `Ваше мышление характеризуется высоким уровнем плюрализма (${plurPercent}%) и низким уровнем авторитарных тенденций. Вы склонны видеть сложность общественных проблем и ценить разнообразие точек зрения.`;
-            } else if (rightPercent > leftPercent && rightPercent > plurPercent) {
-                generalCharacteristic = `В вашем мышлении преобладают черты правого авторитаризма (${rightPercent}%). По критериям Умберто Эко, это может указывать на предрасположенность к "вечному фашизму".`;
-            } else if (leftPercent > rightPercent && leftPercent > plurPercent) {
-                generalCharacteristic = `В вашем мышлении преобладают черты левого авторитаризма (${leftPercent}%). Хотя это отличается от классического фашизма, некоторые механизмы мышления могут быть сходными.`;
-            } else {
-                generalCharacteristic = `Ваше мышление представляет смешанную картину с элементами как авторитарных (правых: ${rightPercent}%, левых: ${leftPercent}%), так и плюралистических (${plurPercent}%) тенденций.`;
-            }
-            
-            // Обновляем DOM
-            rightAuthResult.textContent = rightResult;
-            leftAuthResult.textContent = leftResult;
-            generalResult.textContent = generalCharacteristic;
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="test-data.js"></script>
+    <script src="test-engine.js"></script>
 </body>
+</html>
