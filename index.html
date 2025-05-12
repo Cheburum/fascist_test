@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -225,10 +226,40 @@
             font-weight: 500;
         }
 
+        .logo {
+            display: block;
+            /* Make it behave like a block-level element */
+            max-width: 300px;
+            /* Set a maximum width for larger screens */
+            width: 80%;
+            /* Make it take up a percentage of the container width on smaller screens */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin: 0 auto 1.5rem auto;
+            /* Center the logo and add some bottom margin */
+        }
+
         @media (max-width: 768px) {
             .results-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        .logo {
+            display: block;
+            /* Чтобы занимал всю доступную ширину родительского элемента */
+            max-width: 256px;
+            height: auto;
+            /* Сохраняем пропорции */
+            margin: 0 auto 1.5rem auto;
+            /* Центрируем и добавляем отступ снизу */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         @media (max-width: 600px) {
@@ -240,32 +271,55 @@
             .question {
                 font-size: 1.1rem;
             }
+
+            .logo {
+                max-width: 150px;
+                /* Уменьшаем размер на маленьких экранах */
+                margin-bottom: 1rem auto;
+                /* Уменьшаем отступ снизу на маленьких экранах */
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                /* Можно немного уменьшить размер шрифта заголовка на маленьких экранах, если необходимо */
+                margin-bottom: 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Вступление -->
         <div id="test-intro">
             <h1>Расширенный тест "Насколько ты фашист по Умберто Эко"</h1>
-
             <div class="intro-section">
                 <h2>О тесте</h2>
-                <p>Этот тест основан на эссе Умберто Эко "Вечный фашизм" и расширен для анализа различных форм авторитарного мышления. Тест позволяет выявить авторитарные тенденции не только в классическом фашизме, но и в других идеологических системах, включая анархо-капитализм, Темное Просвещение и либеральный консерватизм.</p>
-                
+                <p>Этот тест основан на эссе Умберто Эко "Вечный фашизм" и расширен для анализа различных форм
+                    авторитарного мышления. Тест позволяет выявить авторитарные тенденции не только в классическом
+                    фашизме, но и в других идеологических системах, включая анархо-капитализм, Темное Просвещение и
+                    либеральный консерватизм.</p>
+
                 <h2>Принцип работы теста</h2>
                 <p>Тест оценивает ваше мышление по пяти ключевым измерениям:</p>
                 <ul>
-                    <li><strong>Традиционализм</strong> — культ традиции, отрицание модернизма, апелляция к "природному порядку"</li>
-                    <li><strong>Иррационализм</strong> — культ действия ради действия, недоверие к интеллектуальному миру, презрение к рефлексии</li>
-                    <li><strong>Трайбализм</strong> — деление мира на "своих" и "чужих", страх перед различием, селективный популизм</li>
-                    <li><strong>Авторитаризм</strong> — несогласие как предательство, культ силы, презрение к слабым, героический кодекс</li>
-                    <li><strong>Элитизм</strong> — иерархическое мышление, поддержка неравенства, мировоззренческий эксклюзивизм</li>
+                    <li><strong>Традиционализм</strong> — культ традиции, отрицание модернизма, апелляция к "природному
+                        порядку"</li>
+                    <li><strong>Иррационализм</strong> — культ действия ради действия, недоверие к интеллектуальному
+                        миру, презрение к рефлексии</li>
+                    <li><strong>Трайбализм</strong> — деление мира на "своих" и "чужих", страх перед различием,
+                        селективный популизм</li>
+                    <li><strong>Авторитаризм</strong> — несогласие как предательство, культ силы, презрение к слабым,
+                        героический кодекс</li>
+                    <li><strong>Элитизм</strong> — иерархическое мышление, поддержка неравенства, мировоззренческий
+                        эксклюзивизм</li>
                 </ul>
-                <p>Каждый вопрос предлагает 6 вариантов ответа, отражающих разные политические позиции. Выбирайте вариант, который наиболее близок вашим убеждениям.</p>
+                <p>Каждый вопрос предлагает 6 вариантов ответа, отражающих разные политические позиции. Выбирайте
+                    вариант, который наиболее близок вашим убеждениям.</p>
             </div>
 
             <button class="btn btn-center" id="start-btn">Начать тест</button>
+            <img src="test_logo.png" alt="Логотип теста" class="logo">
         </div>
 
         <!-- Контейнер для вопросов -->
@@ -285,37 +339,37 @@
         <div id="results">
             <h1>Результаты теста</h1>
             <p>Анализ авторитарных тенденций в вашем мышлении:</p>
-            
+
             <div class="chart-container">
                 <canvas id="radar-chart"></canvas>
             </div>
-            
+
             <div class="results-grid">
                 <div>
                     <div class="result-category">
                         <div class="result-title">Общий уровень авторитарных тенденций</div>
                         <div class="result-description" id="overall-result"></div>
                     </div>
-                    
+
                     <div class="result-category">
                         <div class="result-title">Анализ профиля</div>
                         <div class="result-description" id="profile-analysis"></div>
                     </div>
                 </div>
-                
+
                 <div>
                     <div class="result-category">
                         <div class="result-title">Идеологическая близость</div>
                         <div id="ideology-matches"></div>
                     </div>
-                    
+
                     <div class="result-category">
                         <div class="result-title">Потенциальные "слепые пятна"</div>
                         <div class="result-description" id="blind-spots"></div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="restart-btn">
                 <button class="btn" id="restart-btn">Пройти тест снова</button>
             </div>
@@ -326,4 +380,5 @@
     <script src="test-data.js"></script>
     <script src="test-engine.js"></script>
 </body>
+
 </html>
